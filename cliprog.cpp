@@ -2,6 +2,7 @@
           INCLUDE
 ***********************************/
 #include<iostream>
+#include<cstdio>
 #include<unistd.h>
 #include<sys/types.h>
 #include<sys/socket.h>
@@ -32,7 +33,7 @@ int main(int argc,char* argv[])
 
     servaddr.sin_family=AF_INET;
     servaddr.sin_addr.s_addr=inet_addr(argv[1]);
-    servaddr.sin_port=htons(9985);
+    servaddr.sin_port=htons(9967);
 
     //CONNECTING THE CLIENT TO THE SOCKET:
     connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
@@ -48,18 +49,18 @@ int main(int argc,char* argv[])
     close(sockfd);
     return 0;*/
 
-   cout<<"\nclient";
+   //cout<<"\nclient";
    while(1)
    {
-    
-    cin>>buff;
+    cout<<"\nclient";
+    cin.getline(buff,100);
     n=write(sockfd,buff,sizeof(buff));
     if((strcmp(buff,"end"))==0)
     {
      break;
     }
     m=read(sockfd,buff,sizeof(buff));
-    cout<<"\n server"<<buff;
+    cout<<"\n server"<<"\n"<<buff;
     //cout<<buff;
    }
    close(sockfd);
