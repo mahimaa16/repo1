@@ -9,7 +9,6 @@
 #include<netinet/in.h>
 #include<string.h>
 #include <arpa/inet.h>
-#include"stdio.h"
 using namespace std;
 /**********************************/
 /**********************************
