@@ -21,7 +21,6 @@ int main()
     socklen_t len;
     struct sockaddr_in servaddr, cliaddr;
     char buff[1024];
-    char str[1000];
     sockfd=socket(AF_INET,SOCK_STREAM,0);
     if(sockfd<0)
     {
@@ -31,7 +30,7 @@ int main()
 
     servaddr.sin_family=AF_INET;
     servaddr.sin_addr.s_addr=INADDR_ANY;
-    servaddr.sin_port=htons(9960);
+    servaddr.sin_port=htons(9956);
     
     //BINDING THE SOCKET:
     if(bind(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr))<0)
