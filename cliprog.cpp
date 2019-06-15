@@ -33,34 +33,24 @@ int main(int argc,char* argv[])
 
     servaddr.sin_family=AF_INET;
     servaddr.sin_addr.s_addr=inet_addr(argv[1]);
-    servaddr.sin_port=htons(9967);
+    servaddr.sin_port=htons(9960);
 
     //CONNECTING THE CLIENT TO THE SOCKET:
     connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
-    /*cout<<"\n Enter the message";
-    cin>>buff[i];
-    while(buff[i]!='\n')    
+    
+    //COMMUNICATION BETWEEN CLIENT AND SERVER:
+    while(1)
     {
-     i++;
-     cin>>buff[i];
-    }
-    buff[i]='\0';
-    n=write(sockfd,buff,sizeof(buff));    //SENDING MESSAGE TO THE SERVER
-    close(sockfd);
-    return 0;*/
-
-   //cout<<"\nclient";
-   while(1)
-   {
-    cout<<"\nclient";
+    cout<<"\nclient:";
     cin.getline(buff,100);
     n=write(sockfd,buff,sizeof(buff));
+    m=read(sockfd,buff,sizeof(buff));
+    cout<<"server:"<<buff;
     if((strcmp(buff,"end"))==0)
     {
      break;
     }
-    m=read(sockfd,buff,sizeof(buff));
-    cout<<"\n server"<<"\n"<<buff;
+   
     //cout<<buff;
    }
    close(sockfd);
